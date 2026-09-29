@@ -1,0 +1,36 @@
+[config.wallpaper]
+command = "awww"
+arguments = ["img", "--transition-type", "grow"]
+set = true
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hypr-colors.lua'
+output_path = '~/.config/hypr/colors.lua'
+
+[templates.kitty]
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/kitty/colors.conf'
+
+[templates.fuzzel]
+input_path = '~/.config/matugen/templates/fuzzel.ini'
+output_path = '~/.config/fuzzel/fuzzel.ini'
+
+[templates.quickshell]
+input_path = '~/.config/matugen/templates/Colors.qml'
+output_path = '~/.config/quickshell/Colors.qml'
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako.conf'
+output_path = '~/.config/mako/config'
+
+[templates.hyprlock]
+input_path = '~/.config/matugen/templates/hyprlock.conf'
+output_path = '~/.config/hypr/hyprlock.conf'
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.cava]
+input_path = '~/.config/matugen/templates/cava.conf'
+output_path = '~/.config/cava/config'

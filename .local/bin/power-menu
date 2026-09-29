@@ -1,0 +1,9 @@
+#!/bin/bash
+choice=$(printf "Shutdown\nReboot\nReboot to Windows\nSuspend\nLog out\n" | fuzzel --dmenu --prompt "Power  " --lines 5)
+case "$choice" in
+  "Shutdown") systemctl poweroff ;;
+  "Reboot") systemctl reboot ;;
+  "Reboot to Windows") systemctl reboot --boot-loader-entry=auto-windows ;;
+  "Suspend") systemctl suspend ;;
+  "Log out") hyprctl dispatch 'hl.dsp.exit()' ;;
+esac

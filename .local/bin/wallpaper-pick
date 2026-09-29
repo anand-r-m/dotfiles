@@ -1,0 +1,13 @@
+#!/bin/bash
+dir=~/Pictures/Wallpapers
+pick=$(ls "$dir" | fuzzel --dmenu --prompt "Wallpaper  ")
+[ -z "$pick" ] && exit
+f="$dir/$pick"
+
+matugen image "$f" -m dark --source-color-index 0 2>/dev/null || matugen image "$f" -m dark
+
+hyprctl reload > /dev/null
+pkill -USR1 kitty
+pkill -USR1 cava
+makoctl reload
+notify-send "Theme updated" "$pick" -i "$f"

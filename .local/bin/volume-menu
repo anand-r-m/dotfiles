@@ -1,0 +1,12 @@
+#!/bin/bash
+cur=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%.0f%%", $2*100} /MUTED/{printf " (muted)"}')
+sinks=$(wpctl status | awk '/Sinks:/{f=1;next} /Sources:/{if(f)exit} f' | grep -E '[0-9]+\.' | sed -E 's/[│├└─*]//g; s/^[[:space:]]+//; s/[[:space:]]*\[vol:.*//')
+
+choice=$(printf "Mute / unmute\n100%%\n75%%\n50%%\n25%%\n10%%\n%s\n" "$(echo "$sinks" | sed 's/^/Output: /')" \
+  | fuzzel --dmenu --prompt "Volume $cur  " --lines 10)
+
+case "$choice" in
+  "Mute / unmute") wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+  *%) wpctl set-volume @DEFAULT_AUDIO_SINK@ "$choice" ;;
+  Output:*) wpctl set-default "$(echo "$choice" | grep -oE '[0-9]+' | head -1)" ;;
+esac

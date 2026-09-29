@@ -1,0 +1,10 @@
+#!/bin/bash
+dir=~/Pictures/Screenshots
+mkdir -p "$dir"
+f="$dir/$(date +%Y-%m-%d_%H-%M-%S).png"
+case "$1" in
+  region) grim -g "$(slurp)" "$f" || exit ;;
+  *) grim "$f" ;;
+esac
+wl-copy < "$f"
+notify-send "Screenshot saved" "Copied to clipboard" -i "$f"

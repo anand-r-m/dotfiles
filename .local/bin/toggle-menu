@@ -1,0 +1,10 @@
+#!/bin/bash
+state="/tmp/menu-open-$USER"
+if pgrep -x fuzzel > /dev/null; then
+  last=$(cat "$state" 2>/dev/null)
+  pkill -x fuzzel
+  [ "$last" = "$*" ] && exit
+  sleep 0.1
+fi
+echo "$*" > "$state"
+exec "$@"

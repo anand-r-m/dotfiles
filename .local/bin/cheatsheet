@@ -1,0 +1,6 @@
+#!/bin/bash
+file=~/.config/hypr/cheatsheet.txt
+choice=$(sed 's/ *::.*//' "$file" | fuzzel --dmenu --prompt "Shortcuts  " --width 60 --lines 18)
+[ -z "$choice" ] && exit
+cmd=$(grep -F "$choice" "$file" | head -1 | sed -n 's/.*:: *//p')
+[ -n "$cmd" ] && sh -c "$cmd" &

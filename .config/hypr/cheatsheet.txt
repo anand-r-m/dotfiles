@@ -1,0 +1,35 @@
+SUPER + Space          App launcher                 :: fuzzel
+SUPER + Q              Open terminal                :: kitty
+SUPER + C              Close window
+SUPER + F              Maximize / restore window
+SUPER + Shift + F      Fullscreen / restore window
+SUPER + V              Float / tile window
+SUPER + 1-6            Switch workspace
+SUPER + Shift + 1-6    Move window to workspace
+SUPER + B              Brave                        :: brave
+SUPER + E              File manager                 :: thunar
+SUPER + W              Change wallpaper + theme     :: ~/.local/bin/wallpaper-pick
+SUPER + N              Wi-Fi menu                   :: networkmanager_dmenu
+SUPER + A              Volume menu                  :: ~/.local/bin/volume-menu
+SUPER + Shift + B      Bluetooth menu               :: ~/.local/bin/bt-menu
+SUPER + Shift + V      Clipboard history            :: cliphist list | fuzzel --dmenu | cliphist decode | wl-copy
+SUPER + Shift + S      Screenshot (area)            :: sleep 0.3 && ~/.local/bin/screenshot region
+PrtSc                  Screenshot (full screen)     :: sleep 0.3 && ~/.local/bin/screenshot
+SUPER + I              btop (system monitor)        :: kitty -o font_size=8.5 btop
+SUPER + Shift + I      cava (music visualizer)      :: kitty -o font_size=8.5 cava
+SUPER + L              Lock screen                  :: loginctl lock-session
+SUPER + Esc            Power menu                   :: ~/.local/bin/power-menu
+SUPER + /              This cheat sheet
+F1 / F2 / F3           Mute / volume down / up
+F5 / F6                Brightness down / up
+3-finger swipe         Switch workspace
+SUPER + arrows         Focus window left/right/up/down
+SUPER + Shift + arrows Move window left/right/up/down
+SUPER + S              Scratchpad terminal (toggle)
+SUPER + Alt + S        Send window to scratchpad
+z <folder>             Jump to a folder (terminal)
+Ctrl + R               Search command history (terminal)
+Ctrl + T               Find a file (terminal)
+→                      Accept suggestion (terminal)
+SUPER + D              Do not disturb (toggle)      :: makoctl mode -t do-not-disturb
+SUPER + Shift + N      Night light (toggle)         :: pkill -x hyprsunset || hyprsunset -t 4500

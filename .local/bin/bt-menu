@@ -1,0 +1,38 @@
+#!/bin/bash
+menu() { fuzzel --dmenu --prompt "$1  " --lines 10; }
+mac_of() { grep -oE '([0-9A-F]{2}:){5}[0-9A-F]{2}' <<< "$1"; }
+
+if ! bluetoothctl show | grep -q "Powered: yes"; then
+  [ "$(printf 'Turn Bluetooth on\n' | menu 'Bluetooth (off)')" = "Turn Bluetooth on" ] && bluetoothctl power on
+  exit
+fi
+
+items=("Turn Bluetooth off" "Scan for new devices")
+while read -r _ mac name; do
+  if bluetoothctl info "$mac" | grep -q "Connected: yes"; then
+    items+=("Disconnect: $name  [$mac]")
+  else
+    items+=("Connect: $name  [$mac]")
+  fi
+done < <(bluetoothctl devices Paired)
+
+choice=$(printf '%s\n' "${items[@]}" | menu "Bluetooth")
+case "$choice" in
+  "Turn Bluetooth off") bluetoothctl power off ;;
+  "Scan for new devices")
+    notify-send "Bluetooth" "Scanning for 10 seconds..."
+    bluetoothctl --timeout 10 scan on > /dev/null
+    paired=$(bluetoothctl devices Paired)
+    new=()
+    while read -r _ mac name; do
+      grep -q "$mac" <<< "$paired" || new+=("Pair: $name  [$mac]")
+    done < <(bluetoothctl devices)
+    pick=$(printf '%s\n' "${new[@]}" | menu "New devices")
+    [ -z "$pick" ] && exit
+    m=$(mac_of "$pick")
+    bluetoothctl pair "$m" && bluetoothctl trust "$m" && bluetoothctl connect "$m" \
+      && notify-send "Bluetooth" "Connected" || notify-send "Bluetooth" "Pairing failed"
+    ;;
+  Connect:*) bluetoothctl connect "$(mac_of "$choice")" && notify-send "Bluetooth" "Connected" ;;
+  Disconnect:*) bluetoothctl disconnect "$(mac_of "$choice")" ;;
+esac
