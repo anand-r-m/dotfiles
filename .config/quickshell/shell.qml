@@ -7,6 +7,8 @@ import Quickshell.Widgets
 import QtQuick
 
 ShellRoot {
+  Settings {}
+  PowerScreen {}
   Dock {}
   Variants {
     model: Quickshell.screens
@@ -29,6 +31,7 @@ ShellRoot {
           BarText { text: Qt.formatDateTime(clock.date, "ddd, dd MMM"); font.bold: true }
         }
         Pill { Stats {} }
+        Media {}
       }
 
       // CENTER: workspaces
@@ -90,7 +93,6 @@ ShellRoot {
         }
 
         Pill {
-          Toggles {}
           Network {}
           BtStatus {}
           Volume {}
@@ -107,6 +109,7 @@ ShellRoot {
           }
         }
 
+        ControlCenter {}
         PowerButton {}
       }
     }

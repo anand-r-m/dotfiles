@@ -1,0 +1,13 @@
+#!/bin/bash
+f="${1:-$(cat ~/.cache/current-wallpaper 2>/dev/null)}"
+[ -f "$f" ] || exit 1
+mode=$(cat ~/.cache/theme-mode 2>/dev/null || echo dark)
+echo "$f" > ~/.cache/current-wallpaper
+
+matugen image "$f" -m "$mode" --source-color-index 0 2>/dev/null || matugen image "$f" -m "$mode"
+
+hyprctl reload > /dev/null
+pkill -USR1 kitty
+pkill -USR1 cava
+makoctl reload
+notify-send "Theme updated" "$(basename "$f")" -i "$f"
