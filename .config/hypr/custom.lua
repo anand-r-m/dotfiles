@@ -67,3 +67,6 @@ hl.workspace_rule({ workspace = "special:magic", on_created_empty = "kitty" })
 
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("makoctl mode -t do-not-disturb"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("pkill -x hyprsunset || hyprsunset -t 4500"))
+
+hl.window_rule({ name = "code-ws", match = { class = "^([Cc]ode)$" }, workspace = "1" })
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("code"))

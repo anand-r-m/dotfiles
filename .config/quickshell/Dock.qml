@@ -12,7 +12,7 @@ Variants {
     screen: modelData
 
     // Apps that are always in the dock (desktop file names)
-    property var pinned: ["brave-browser", "kitty", "thunar"]
+    property var pinned: ["code", "brave-browser", "kitty", "thunar"]
 
     property bool shown: false
     property var apps: {

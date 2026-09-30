@@ -33,3 +33,4 @@ Ctrl + T               Find a file (terminal)
 →                      Accept suggestion (terminal)
 SUPER + D              Do not disturb (toggle)      :: makoctl mode -t do-not-disturb
 SUPER + Shift + N      Night light (toggle)         :: pkill -x hyprsunset || hyprsunset -t 4500
+SUPER + Shift + C      VS Code                      :: code
