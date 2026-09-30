@@ -7,6 +7,7 @@ import Quickshell.Widgets
 import QtQuick
 
 ShellRoot {
+  WallpaperPicker {}
   Settings {}
   PowerScreen {}
   Dock {}

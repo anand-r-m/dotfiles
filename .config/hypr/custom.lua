@@ -27,7 +27,7 @@ hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/toggle-me
 
 hl.bind("Print", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/screenshot"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/screenshot region"))
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/toggle-menu /home/anand-r-m/.local/bin/power-menu"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("qs ipc call power toggle"))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/toggle-menu /home/anand-r-m/.local/bin/bt-menu"))
 
 hl.on("hyprland.start", function()
@@ -38,7 +38,7 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("kitty -o font_size=8.5 btop"))
 hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd("kitty -o font_size=8.5 cava"))
 hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd("kitty -o font_size=8.5 cava"))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/toggle-menu /home/anand-r-m/.local/bin/wallpaper-pick"))
+hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("qs ipc call wallpaper toggle"))
 hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("/home/anand-r-m/.local/bin/toggle-menu /home/anand-r-m/.local/bin/cheatsheet"))
 
 -- Monitors: external on the left, laptop on the right
@@ -70,3 +70,4 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("pkill -x hyprsunset || hyprs
 
 hl.window_rule({ name = "code-ws", match = { class = "^([Cc]ode)$" }, workspace = "1" })
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("code"))
+hl.bind(mainMod .. " + comma", hl.dsp.exec_cmd("qs ipc call settings toggle"))
